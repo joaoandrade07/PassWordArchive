@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        android:id="@+id/searchView"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:icon="@drawable/search_24"
+        android:title=""
+        android:actionLayout="@layout/home"
+        />
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/account"
+        android:title=""
+        app:showAsAction="ifRoom|collapseActionView" />
+
+</menu>

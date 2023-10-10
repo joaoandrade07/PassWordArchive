@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PassWord Archive</string>
+    <string name="email">Email</string>
+    <string name="senha">Password</string>
+    <string name="esqueci_senha">i forgot my password</string>
+    <string name="entrar">Login</string>
+    <string name="fazer_cadastro">don\'t have an account? Register</string>
+    <string name="nome">Name</string>
+    <string name="confirmar_senha">Confirm password</string>
+    <string name="cadastrar">Register</string>
+    <string name="procurar_contas">Search for accounts</string>
+    <string name="username">Your Name</string>
+    <string name="user_photo">User photo</string>
+    <string name="configuracoes">Settings</string>
+    <string name="alterar_nome">Change name</string>
+    <string name="alterar_email">Change email</string>
+    <string name="seguranca">Security</string>
+    <string name="alterar_senha">Change password</string>
+    <string name="biometria">Biometry</string>
+    <string name="outros">Others</string>
+    <string name="alterar_idioma">Change language</string>
+    <string name="sair_do_app">Exit the application</string>
+    <string name="voltar_tela">Back screen</string>
+    <string name="voltar_home">Back home</string>
+    <string name="alterar">Change</string>
+    <string name="erro_senha_pequena">Enter a password with at least 6 characters</string>
+    <string name="conta_ja_cadastrada">Account already registered</string>
+    <string name="email_invalido">Invalid email</string>
+    <string name="sem_internet">No internet connection</string>
+    <string name="erro_cadastro_generico">Error registering user</string>
+    <string name="preencha_todos_campos">Fill in all the fields!</string>
+    <string name="erro_ao_fazer_login">Error when logging in user</string>
+    <string name="cadastro_sucesso">Registration completed successfully!</string>
+    <string name="senha_diferentes">Different passwords!</string>
+    <string name="entrar_usando_digital">Login using fingerprint</string>
+    <string name="autenticacao">Authentication</string>
+    <string name="cancel_biometria">Cancel</string>
+    <string name="tela_principal">Main screen</string>
+    <string name="modo_aviao_ativado">Airplane mode activated</string>
+    <string name="modo_aviao_desativado">Airplane mode off</string>
+    <string name="bem_vindo">Welcome</string>
+    <string name="login_sucesso">Login successfully!</string>
+</resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "846598147995",
+    "project_id": "password-archive-ba28a",
+    "storage_bucket": "password-archive-ba28a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846598147995:android:5940e28bb17f55d3ee9b3e",
+        "android_client_info": {
+          "package_name": "com.joaoandrade.passwordarchive"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5vq40tzR9eLgZ2tsJdN5YaCjjDBZpNmU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
