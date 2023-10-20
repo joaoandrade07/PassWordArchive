@@ -37,13 +37,11 @@ public class LanguageActivity extends AppCompatActivity {
         });
 
         binding.portugues.setOnClickListener(v -> {
-            LocaleListCompat appLocale = LocaleListCompat.forLanguageTags("pt-BR");
-            AppCompatDelegate.setApplicationLocales(appLocale);
+            MudarLinguagem("pt-BR");
         });
 
         binding.ingles.setOnClickListener(v -> {
-            LocaleListCompat appLocale = LocaleListCompat.forLanguageTags("en-US");
-            AppCompatDelegate.setApplicationLocales(appLocale);
+            MudarLinguagem("en-US");
         });
     }
 
@@ -53,7 +51,7 @@ public class LanguageActivity extends AppCompatActivity {
         VerificarLinguagem();
     }
 
-    private void mudarVisualizacao(ImageView idVisivel, ImageView idGone){
+    private void MudarVisualizacao(ImageView idVisivel, ImageView idGone){
         idVisivel.setVisibility(View.GONE);
         idGone.setVisibility(View.VISIBLE);
     }
@@ -61,7 +59,12 @@ public class LanguageActivity extends AppCompatActivity {
     private void VerificarLinguagem(){
         LocaleListCompat appLocale = AppCompatDelegate.getApplicationLocales();
         if(appLocale.toLanguageTags().equals("en-US") ){
-            mudarVisualizacao(binding.ptBR, binding.enUS);
+            MudarVisualizacao(binding.ptBR, binding.enUS);
         }
+    }
+
+    private void MudarLinguagem(String lingugem){
+        LocaleListCompat appLocale = LocaleListCompat.forLanguageTags(lingugem);
+        AppCompatDelegate.setApplicationLocales(appLocale);
     }
 }
