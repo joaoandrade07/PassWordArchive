@@ -3,7 +3,7 @@ package com.joaoandrade.passwordarchive.Model;
 public class UserModel {
 
     public UserModel(){
-
+        
     }
 
     private String id;

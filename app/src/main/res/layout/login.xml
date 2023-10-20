@@ -82,7 +82,7 @@
             android:text="@string/entrar"
             android:textAllCaps="false"
             android:textSize="20sp"
-            android:background="@drawable/background_input"
+            android:background="@drawable/button_state"
             android:textColor="@color/white"/>
 
         <LinearLayout
@@ -128,7 +128,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/fingerprint"
+                    android:src="@drawable/fingerprint_image"
                     android:importantForAccessibility="no" />
             </LinearLayout>
 

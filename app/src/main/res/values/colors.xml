@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background_page">#282828</color>
     <color name="background_input">#454545</color>
+    <color name="button_pressed">#222222</color>
     <color name="placeholder">#838383</color>
     <color name="background_cartao">#101010</color>
     <color name="seccao_configuracoes">#CBCBCB</color>

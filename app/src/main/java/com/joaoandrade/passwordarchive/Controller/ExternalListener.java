@@ -1,4 +1,4 @@
-package com.joaoandrade.passwordarchive;
+package com.joaoandrade.passwordarchive.Controller;
 
 
 import static android.provider.Settings.Secure.getString;

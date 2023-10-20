@@ -6,4 +6,154 @@
     android:layout_height="match_parent"
     tools:context=".View.LanguageActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        tools:ignore="MissingConstraints">
+
+
+        <ImageView
+            android:id="@+id/voltarSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:clickable="true"
+            android:contentDescription="@string/voltar_tela"
+            android:focusable="true"
+            android:padding="10dp"
+            android:src="@drawable/image_arrow_back"
+            android:background="@drawable/button_secondary_images"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/name_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/selecionar_idioma"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/voltarHome"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/image_home"
+            android:padding="10dp"
+            android:background="@drawable/button_secondary_images"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/name_app"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/voltar_home" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0"
+        tools:layout_editor_absoluteX="0dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/background_input"/>
+
+        <RelativeLayout
+            android:id="@+id/portugues"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:text="@string/idioma_portugues"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:ignore="RelativeOverlap" />
+
+            <ImageView
+                android:id="@+id/pt_BR"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/image_check"
+                android:contentDescription="@string/alterar_nome" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/background_input"/>
+
+
+        <RelativeLayout
+            android:id="@+id/ingles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:text="@string/idioma_ingles"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:ignore="RelativeOverlap" />
+
+            <ImageView
+                android:id="@+id/en_US"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/image_check"
+                android:contentDescription="@string/alterar_nome"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/background_input"/>
+
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

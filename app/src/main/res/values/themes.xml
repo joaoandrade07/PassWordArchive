@@ -83,4 +83,10 @@
         <!--        <item name="background">@color/black</item>-->
 
     </style>
+
+
+    <style name="BackgroundFab">
+        <item name="colorPrimaryContainer">#333333</item>
+        <item name="colorOnPrimaryContainer">@color/white</item>
+    </style>
 </resources>

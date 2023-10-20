@@ -82,7 +82,7 @@
         app:layout_constraintHorizontal_bias="0.9"
         app:menu_colorNormal="@color/black"
         app:menu_colorPressed="@color/background_input"
-        fab:menu_icon="@drawable/baseline_add"
+        fab:menu_icon="@drawable/image_button_add"
         fab:menu_labels_colorNormal="@color/black"
         fab:menu_labels_colorPressed="@color/background_input"
         fab:menu_labels_textColor="@color/white">
@@ -91,7 +91,7 @@
             android:id="@+id/menu_item1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_add"
+            android:src="@drawable/image_button_add"
             app:fab_colorPressed="@color/background_input"
             app:fab_shadowColor="@color/background_page"
             app:fab_shadowRadius="10dp"

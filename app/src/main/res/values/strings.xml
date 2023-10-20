@@ -40,4 +40,8 @@
     <string name="modo_aviao_desativado">Modo avião desativado</string>
     <string name="bem_vindo">Bem vindo</string>
     <string name="login_sucesso">Login realizado com sucesso!</string>
+    <string name="selecionar_idioma">Selecionar idioma</string>
+    <string name="idioma_portugues">Português</string>
+    <string name="idioma_ingles">Inglês</string>
+    <string name="foto_alterada">Foto alterada com sucesso!</string>
 </resources>

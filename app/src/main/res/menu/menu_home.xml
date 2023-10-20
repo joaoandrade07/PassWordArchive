@@ -7,14 +7,14 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         android:id="@+id/searchView"
         app:showAsAction="ifRoom|collapseActionView"
-        android:icon="@drawable/search_24"
+        android:icon="@drawable/image_search"
         android:title=""
         android:actionLayout="@layout/home"
         />
 
     <item
         android:id="@+id/action_settings"
-        android:icon="@drawable/account"
+        android:icon="@drawable/image_account"
         android:title=""
         app:showAsAction="ifRoom|collapseActionView" />
 

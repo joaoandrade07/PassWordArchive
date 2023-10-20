@@ -1,13 +1,12 @@
-package com.joaoandrade.passwordarchive;
+package com.joaoandrade.passwordarchive.Controller;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.media.audiofx.Equalizer;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.joaoandrade.passwordarchive.View.SettingsActivity;
+import com.joaoandrade.passwordarchive.R;
 
 import java.util.Objects;
 

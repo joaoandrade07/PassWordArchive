@@ -1,4 +1,4 @@
-package com.joaoandrade.passwordarchive;
+package com.joaoandrade.passwordarchive.Controller;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.joaoandrade.passwordarchive.R;
+import com.joaoandrade.passwordarchive.View.AlterarNomeActivity;
 import com.joaoandrade.passwordarchive.View.HomeActivity;
 import com.joaoandrade.passwordarchive.View.LoginActivity;
 import com.joaoandrade.passwordarchive.View.SettingsActivity;
@@ -34,13 +36,13 @@ public class Notificacoes extends ContextWrapper {
     private final String description = "Channel for notifications of Password Archive";
 
 
-
+//Para criar uma canal de notificação
     public void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_HIGH);
             channel.enableLights(true);
             channel.enableVibration(true);
-            channel.setVibrationPattern(new long[]{100,500,200,340});
+            channel.setVibrationPattern(new long[]{100,300,200,150});
             channel.setLightColor(Color.BLUE);
             channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
             channel.setDescription(description);
@@ -50,13 +52,10 @@ public class Notificacoes extends ContextWrapper {
         }
     }
 
-
+//Para criar uma notificação
     @SuppressLint("MissingPermission")
-    public void notificacao( String titulo, String descricao) {
+    public void notificacao( String titulo, String descricao, java.lang.Class<?> cls) {
         notificationId = notificationId + 1;
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle(titulo)
@@ -64,10 +63,27 @@ public class Notificacoes extends ContextWrapper {
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText(descricao))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
+        if(cls !=null){
+            Intent intent = new Intent(getApplicationContext(), cls);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
+            builder.setContentIntent(pendingIntent);
+        }
         NotificationManager notificationManager = getSystemService(NotificationManager.class);
         notificationManager.notify(notificationId, builder.build());
+    }
+
+// Para deletar um canal de notificação
+    public void deleteNotificationChannel(String channelId){
+        if(channelId == null){
+            channelId = CHANNEL_ID;
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.deleteNotificationChannel(channelId);
+        }
     }
 
 

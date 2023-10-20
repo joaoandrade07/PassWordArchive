@@ -5,8 +5,7 @@ plugins {
 
 android {
     namespace = "com.joaoandrade.passwordarchive"
-    compileSdk = 33
-
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.joaoandrade.passwordarchive"
@@ -40,8 +39,9 @@ android {
 dependencies {
 
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("com.google.firebase:firebase-storage-ktx:20.2.1")
 //    implementation("androidx.navigation:navigation-fragment:2.4.2")
 //    implementation("androidx.navigation:navigation-ui:2.4.2")
     testImplementation("junit:junit:4.13.2")
@@ -55,6 +55,9 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-storage")
 
     implementation("androidx.biometric:biometric:1.1.0")
+
+    implementation("org.greenrobot:eventbus:3.3.1")
 }

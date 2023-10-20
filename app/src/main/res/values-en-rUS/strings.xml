@@ -19,7 +19,7 @@
     <string name="alterar_senha">Change password</string>
     <string name="biometria">Biometry</string>
     <string name="outros">Others</string>
-    <string name="alterar_idioma">Change language</string>
+    <string name="alterar_idioma">Choose a language</string>
     <string name="sair_do_app">Exit the application</string>
     <string name="voltar_tela">Back screen</string>
     <string name="voltar_home">Back home</string>
@@ -41,4 +41,8 @@
     <string name="modo_aviao_desativado">Airplane mode off</string>
     <string name="bem_vindo">Welcome</string>
     <string name="login_sucesso">Login successfully!</string>
+    <string name="selecionar_idioma">Select language</string>
+    <string name="idioma_portugues">Portuguese</string>
+    <string name="idioma_ingles">English</string>
+    <string name="foto_alterada">Photo changed successfully!</string>
 </resources>

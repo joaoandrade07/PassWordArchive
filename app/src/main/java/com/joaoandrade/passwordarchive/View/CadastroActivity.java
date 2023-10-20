@@ -3,7 +3,6 @@ package com.joaoandrade.passwordarchive.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,23 +11,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.joaoandrade.passwordarchive.ExternalListener;
+import com.joaoandrade.passwordarchive.Controller.ExternalListener;
 import com.joaoandrade.passwordarchive.Model.UserModel;
 import com.joaoandrade.passwordarchive.R;
 import com.joaoandrade.passwordarchive.databinding.CadastroBinding;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -121,6 +117,7 @@ public class CadastroActivity extends AppCompatActivity {
         usuarios.put("email", user.getEmail());
         usuarios.put("biometria",false);
         usuarios.put("lingua", null);
+        usuarios.put("foto", null);
 
         user.setId(Objects.requireNonNull(auth.getCurrentUser()).getUid());
 
