@@ -34,6 +34,7 @@
     <string name="senha_diferentes">Senhas diferentes!</string>
     <string name="entrar_usando_digital">Entrar utilizando impressão digital</string>
     <string name="autenticacao">Autenticação</string>
+    <string name="use_sua_digital">Use sua impressão digital</string>
     <string name="cancel_biometria">Cancelar</string>
     <string name="tela_principal">Tela Principal</string>
     <string name="modo_aviao_ativado">Modo avião ativado</string>
@@ -44,4 +45,7 @@
     <string name="idioma_portugues">Português</string>
     <string name="idioma_ingles">Inglês</string>
     <string name="foto_alterada">Foto alterada com sucesso!</string>
+    <string name="nome_alterado">Nome alterado com sucesso!</string>
+    <string name="deletar">Deletar</string>
+    <string name="editar">Editar</string>
 </resources>

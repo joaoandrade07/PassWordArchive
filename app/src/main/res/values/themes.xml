@@ -4,38 +4,41 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
-        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:statusBarColor">@color/background_page</item>
         <item name="android:colorBackground">@color/background_page</item>
+
+
+        <item name="android:editTextStyle">@style/Cursor</item>
+        <item name="android:colorControlActivated">@color/white</item>
+        <item name="android:textColorHighlight">#5ADADADA</item>
     </style>
 
     <style name="Theme.PassWordArchive" parent="Base.Theme.PassWordArchive">
-
-        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:statusBarColor">@color/background_page</item>
         <item name="android:colorBackground">@color/background_page</item>
+        <item name="android:textColor">@color/white</item>
+
+        <item name="android:editTextStyle">@style/Cursor</item>
+        <item name="android:colorControlActivated">@color/white</item>
+
     </style>
 
-    <style name="Search_View_Theme">
-        <item name="colorSecondary">#8a9399</item>
-        <item name="searchBackground">#1a2229</item>
-        <item name="android:inputType">text</item>
-        <item name="android:hint">@string/search_hint</item>
-        <item name="hintColor">#8a9399</item>
-        <item name="backIconTint">#8a9399</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="iconsTint">#8a9399</item>
+    <style name="TelaPricipal" parent="Theme.PassWordArchive">
+        <item name="android:statusBarColor">@color/black</item>
     </style>
 
     <style name="MenuTheme">
 
-        <item name="android:background">@color/black</item>
+        <item name="android:backgroundTint">@color/black</item>
         <!--<item name="android:backgroundTint">@color/black</item>  deixa o topo inteiro da cor, mas só funciona com o android:background-->
-        <item name="android:textColorPrimary">@color/white</item> <!--Deixa o nome do app branco no menu, além das outras letras-->
+        <item name="android:textColorPrimary">@color/white
+        </item> <!--Deixa o nome do app branco no menu, além das outras letras-->
         <item name="colorControlActivated">@color/white</item><!--marcador de texto primario-->
         <item name="colorControlNormal">@color/white</item><!-- muda a cor dos botões no menu-->
-<!--        <item name="colorSecondary">@color/white</item>-->
+        <!--        <item name="colorSecondary">@color/white</item>-->
         <!--<item name="colorAccent">#ff0000</item>marcador de texto secundario-->
-<!--        <item name="colorButtonNormal">@color/white</item>-->
-<!--        <item name="colorContainer">@color/white</item>-->
+        <!--        <item name="colorButtonNormal">@color/white</item>-->
+        <!--        <item name="colorContainer">@color/white</item>-->
         <!--        <item name="colorControlHighlight">@color/black</item>-->
         <!--        <item name="colorOnBackground">@color/black</item>-->
         <!--        <item name="colorOnContainer">@color/black</item>-->
@@ -45,21 +48,20 @@
         <!--        <item name="android:colorPrimary">@color/black</item>-->
 
 
-
-
-
     </style>
 
 
     <style name="MenuBackground">
 
-        <item name="android:textColorPrimary">@color/white</item> <!--Deixa o nome do app branco no menu, além das outras letras-->
+        <item name="android:textColorPrimary">@color/white
+        </item> <!--Deixa o nome do app branco no menu, além das outras letras-->
         <!--<item name="android:background">@color/black</item> muda a cor de onde fica o texto no menu flutuante -->
         <!--        <item name="backgroundColor">@color/black</item>-->
         <!--        <item name="backgroundTint">@color/black</item>-->
         <!--        <item name="backgroundInsetBottom">@color/black</item>-->
         <!--        <item name="backgroundSplit">@color/black</item>-->
-        <item name="android:backgroundTint">#000000</item> <!-- deixa o topo inteiro da cor, mas só funciona com o android:background-->
+        <item name="android:backgroundTint">#000000
+        </item> <!-- deixa o topo inteiro da cor, mas só funciona com o android:background-->
         <!--        <item name="android:backgroundDimAmount">@color/black</item>-->
         <!--        <item name="android:backgroundDimEnabled">@color/black</item>-->
         <!--        <item name="android:backgroundSplit">@color/black</item>-->
@@ -88,5 +90,41 @@
     <style name="BackgroundFab">
         <item name="colorPrimaryContainer">#333333</item>
         <item name="colorOnPrimaryContainer">@color/white</item>
+    </style>
+
+    <style name="BackgroundFabMain">
+        <item name="colorPrimaryContainer">@color/black</item>
+        <item name="colorOnPrimaryContainer">@color/white</item>
+    </style>
+
+
+    <style name="AdicionarSenha" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:colorBackground">@color/black</item>
+
+
+        <item name="android:editTextStyle">@style/Cursor</item> <!--estilo do cursor de texto-->
+        <item name="android:colorControlActivated">@color/white</item> <!--cor do seletor de texto-->
+        <item name="android:textColorHighlight">#5ADADADA</item> <!--cor do background do texto selecionado-->
+
+
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+
+
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/placeholder</item>
+        <item name="android:editTextColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+<!--    <style name="DialogStyle" parent="Theme.Design.Light.BottomSheetDialog">-->
+<!--        <item name="android:windowIsFloating">false</item>-->
+<!--        <item name="android:statusBarColor">@android:color/transparent</item>-->
+<!--        <item name="android:windowSoftInputMode">adjustResize</item>-->
+<!--    </style>-->
+
+    <style name="Cursor" parent="@android:style/Widget.EditText">
+        <item name="android:textCursorDrawable">@drawable/cursor</item>
     </style>
 </resources>

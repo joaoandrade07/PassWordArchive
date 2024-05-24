@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="15dp"
+    android:paddingTop="30dp"
+    android:theme="@style/AdicionarSenha"
+    tools:context=".UI.AdicionarSenha.AdicionarSenhaActivity">
+
+
+
+    <EditText
+        android:id="@+id/conta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:hint="Conta"
+        android:background="@null"
+        android:inputType="text"
+        android:importantForAutofill="no" />
+
+    <View
+        android:id="@+id/view_conta"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"
+        android:layout_below="@+id/conta"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="15dp"/>
+
+    <EditText
+        android:id="@+id/usuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:hint="Usuário"
+        android:background="@null"
+        android:layout_below="@id/view_conta"
+        android:inputType="text"
+        android:importantForAutofill="no" />
+
+    <View
+        android:id="@+id/view_usuario"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"
+        android:layout_below="@+id/usuario"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="15dp"/>
+
+    <EditText
+        android:id="@+id/senha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:hint="Senha"
+        android:background="@null"
+        android:layout_below="@id/view_usuario"
+        android:inputType="textPassword"
+        android:importantForAutofill="no" />
+
+    <View
+        android:id="@+id/view_senha"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"
+        android:layout_below="@+id/senha"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="15dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_senha"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gerar senha aleatoria"
+            android:layout_marginEnd="5dp"/>
+
+        <Switch
+            android:id="@+id/gerar_senha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:thumb="@drawable/thumb_toogle_button"
+            android:track="@drawable/track_toogle_button_2"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/cancelar_senha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancelar"
+        android:layout_below="@id/linear_layout"
+        android:layout_marginTop="10dp"
+        android:padding="15dp"
+        android:layout_alignParentStart="true"
+        android:backgroundTint="@android:color/transparent"
+        android:shadowColor="@android:color/transparent"/>
+
+    <TextView
+        android:id="@+id/salvar_senha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salvar"
+        android:layout_below="@id/linear_layout"
+        android:layout_marginTop="10dp"
+        android:padding="15dp"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@android:color/transparent" />
+
+</RelativeLayout>

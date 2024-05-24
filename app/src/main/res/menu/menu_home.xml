@@ -12,10 +12,11 @@
         android:actionLayout="@layout/home"
         />
 
-    <item
-        android:id="@+id/action_settings"
-        android:icon="@drawable/image_account"
-        android:title=""
-        app:showAsAction="ifRoom|collapseActionView" />
+<!--    <item-->
+<!--        android:id="@+id/action_settings"-->
+<!--        app:actionViewClass="com.google.android.material.imageview.ShapeableImageView"-->
+<!--        android:icon="@drawable/account_circle"-->
+<!--        android:title="@string/configuracoes"-->
+<!--        app:showAsAction="ifRoom|collapseActionView"/>-->
 
 </menu>

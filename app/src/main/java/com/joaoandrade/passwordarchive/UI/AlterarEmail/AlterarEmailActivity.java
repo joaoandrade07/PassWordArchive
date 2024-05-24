@@ -1,4 +1,4 @@
-package com.joaoandrade.passwordarchive.View;
+package com.joaoandrade.passwordarchive.UI.AlterarEmail;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.joaoandrade.passwordarchive.UI.TelaPrincipal.HomeActivity;
 import com.joaoandrade.passwordarchive.databinding.AlterarEmailBinding;
 
 public class AlterarEmailActivity extends AppCompatActivity {

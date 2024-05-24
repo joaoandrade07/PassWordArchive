@@ -1,7 +1,6 @@
 package com.joaoandrade.passwordarchive.Controller;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -11,17 +10,10 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
-import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import com.joaoandrade.passwordarchive.R;
-import com.joaoandrade.passwordarchive.View.AlterarNomeActivity;
-import com.joaoandrade.passwordarchive.View.HomeActivity;
-import com.joaoandrade.passwordarchive.View.LoginActivity;
-import com.joaoandrade.passwordarchive.View.SettingsActivity;
 
 public class Notificacoes extends ContextWrapper {
 

@@ -1,4 +1,4 @@
-package com.joaoandrade.passwordarchive.View;
+package com.joaoandrade.passwordarchive.UI.AlterarNome;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,22 +11,22 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.joaoandrade.passwordarchive.Controller.ExternalListener;
 import com.joaoandrade.passwordarchive.R;
+import com.joaoandrade.passwordarchive.UI.TelaPrincipal.HomeActivity;
 import com.joaoandrade.passwordarchive.databinding.AlterarNomeBinding;
 
 import java.util.Objects;
 
-public class AlterarNomeActivity extends AppCompatActivity {
+public class AlterarNomeActivity extends AppCompatActivity implements AlterarNomeContrato.AlterarNomeView{
 
     private AlterarNomeBinding binding;
 
-    private final FirebaseAuth auth = FirebaseAuth.getInstance();
-
-    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     private ExternalListener externalListener;
+
+    private AlterarNomeContrato.AlterarNomePresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class AlterarNomeActivity extends AppCompatActivity {
         binding = AlterarNomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         externalListener = new ExternalListener();
+        presenter = new AlterarNomePresenter(this, this);
 
         binding.voltarSettings.setOnClickListener(view -> {
             finish();
@@ -45,34 +46,28 @@ public class AlterarNomeActivity extends AppCompatActivity {
         });
 
         binding.alterarNome.setOnClickListener(view -> {
-            alterarNome(view, binding.inputNome.getText().toString());
+            presenter.AlterarNome(view, binding.inputNome.getText().toString());
         });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        pegarNome();
+        presenter.PegarNome();
     }
 
-    private void alterarNome(View v , String nome){
-        db.collection("Usuarios").document(Objects.requireNonNull(auth.getUid())).update("nome", nome).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                externalListener.SnackBar(v, "Nome alterado com sucesso", getColor(R.color.biometria_ativada), null);
-            }
-        });
+    @Override
+    public void LimparFoco() {
         binding.inputNome.clearFocus();
     }
 
-    private void pegarNome(){
-        if ((auth.getCurrentUser() != null)) {
-            String userId = auth.getCurrentUser().getUid();
-            DocumentReference documentReference = db.collection("Usuarios").document(userId);
-            documentReference.addSnapshotListener( (value, error) -> {
-                assert value != null;
-                binding.inputNome.setText(value.getString("nome"));
-            });
-        }
+    @Override
+    public void MostarNome(DocumentSnapshot value) {
+        binding.inputNome.setText(value.getString("nome"));
+    }
+
+    @Override
+    public void MensagemSucesso(View view, String mensagem) {
+        externalListener.SnackBar(view, mensagem, getColor(R.color.biometria_ativada), null);
     }
 }

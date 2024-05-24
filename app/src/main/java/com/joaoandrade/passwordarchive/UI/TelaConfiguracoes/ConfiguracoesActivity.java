@@ -1,11 +1,13 @@
-package com.joaoandrade.passwordarchive.View;
+package com.joaoandrade.passwordarchive.UI.TelaConfiguracoes;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -14,15 +16,18 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.joaoandrade.passwordarchive.Controller.ExternalListener;
 import com.joaoandrade.passwordarchive.Controller.Notificacoes;
 import com.joaoandrade.passwordarchive.Model.MessageEventBus;
 import com.joaoandrade.passwordarchive.R;
+import com.joaoandrade.passwordarchive.UI.AlterarEmail.AlterarEmailActivity;
+import com.joaoandrade.passwordarchive.UI.AlterarLingua.IdiomaActivity;
+import com.joaoandrade.passwordarchive.UI.AlterarNome.AlterarNomeActivity;
+import com.joaoandrade.passwordarchive.UI.Login.LoginActivity;
+import com.joaoandrade.passwordarchive.UI.TelaPrincipal.HomeActivity;
 import com.joaoandrade.passwordarchive.databinding.SettingsBinding;
 
 import org.greenrobot.eventbus.EventBus;
@@ -31,16 +36,13 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.Objects;
 
-public class SettingsActivity extends AppCompatActivity {
+public class ConfiguracoesActivity extends AppCompatActivity implements ConfiguracoesContrato.ConfiguracoesView{
 
     private SettingsBinding binding;
 
-    private final FirebaseAuth auth = FirebaseAuth.getInstance();
-
-    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     private Notificacoes notificacoes;
 
+    private ConfiguracoesContrato.ConfiguracoesPresenter presenter;
 
     private View v;
 
@@ -52,15 +54,10 @@ public class SettingsActivity extends AppCompatActivity {
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         assert result.getData() != null;
                         binding.userImage.setImageURI(result.getData().getData());
-                        Log.d("Caminho da imgaem", Objects.requireNonNull(result.getData().getData()).toString());
+                        Log.d("Caminho da imgaem", Objects.requireNonNull(result.getData()).toString());
                         EventBus.getDefault().post(new MessageEventBus(getString(R.string.foto_alterada), v));
-                        db.collection("Usuarios").document(Objects.requireNonNull(auth.getUid()))
-                                .update("foto", result.getData().getData()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Log.d("Update", "Sucesso!");
-                            }
-                        });
+                        presenter.SalvarFoto(result.getData().getData());
+
                     }
                 }
             });
@@ -71,29 +68,26 @@ public class SettingsActivity extends AppCompatActivity {
         binding = SettingsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         notificacoes = new Notificacoes(this);
+        presenter = new ConfiguracoesPresenter(this);
 
         //voltar para a tela home
         binding.voltarHome.setOnClickListener(view -> {
-            startActivity(new Intent(this, HomeActivity.class));
+//            startActivity(new Intent(this, HomeActivity.class));
+            finish();
         });
 
         //selecionar imagem
-        binding.selecionarImagem.setOnClickListener(view -> {
-            Intent iGAlerry = new Intent(Intent.ACTION_PICK);
-            iGAlerry.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            mStartForResult.launch(iGAlerry);
-            v = view;
-        });
+        binding.selecionarImagem.setOnClickListener(this::SelecionarFoto);
 
         //iniciar tela de alterar nome
         binding.alterarNome.setOnClickListener(view -> {
-            startActivity(new Intent(SettingsActivity.this, AlterarNomeActivity.class));
+            startActivity(new Intent(ConfiguracoesActivity.this, AlterarNomeActivity.class));
         });
 
 
         //iniciar tela de alterar email
         binding.alterarEmail.setOnClickListener(view -> {
-            startActivity(new Intent(SettingsActivity.this, AlterarEmailActivity.class));
+            startActivity(new Intent(ConfiguracoesActivity.this, AlterarEmailActivity.class));
         });
 
 
@@ -101,7 +95,7 @@ public class SettingsActivity extends AppCompatActivity {
         binding.sairConta.setOnClickListener(view -> {
             notificacoes.deleteNotificationChannel(null);
             FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(SettingsActivity.this, LoginActivity.class));
+            startActivity(new Intent(ConfiguracoesActivity.this, LoginActivity.class));
             finish();
         });
 
@@ -110,20 +104,21 @@ public class SettingsActivity extends AppCompatActivity {
         binding.ativarBiometria.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                AtivarBiometria(b);
+//                AtivarBiometria(b);
+                presenter.AtivarBiometria(b);
             }
         });
 
         //inicar a tela de mudar de idioma
         binding.mudarIdioma.setOnClickListener(view -> {
-            startActivity(new Intent(SettingsActivity.this, LanguageActivity.class));
+            startActivity(new Intent(ConfiguracoesActivity.this, IdiomaActivity.class));
         });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        BuscaDadosUsuario();//buscar os dados do usuario
+        presenter.BuscarDadosUsuario();//buscar os dados do usuario
         EventBus.getDefault().register(this);//registar um evento no event bus
     }
 
@@ -145,40 +140,32 @@ public class SettingsActivity extends AppCompatActivity {
         externalListener.SnackBar(event.getView(), event.message, getColor(R.color.biometria_ativada), null);
     }
 
-    private void BuscaDadosUsuario(){// buscar os dados do usuário no firebase
-        if ((auth.getCurrentUser() != null)) {
-            String userId = auth.getCurrentUser().getUid();
-            DocumentReference documentReference = db.collection("Usuarios").document(userId);
-            documentReference.addSnapshotListener( (value, error) -> {
-                if(value!= null) {
-                    if (Objects.requireNonNull(value).getBoolean("biometria") == Boolean.TRUE) {
-                        binding.ativarBiometria.setChecked(Boolean.TRUE);
-                    }
-                    binding.userName.setText(value.getString("nome"));
 
-                    if (Objects.requireNonNull(value).getString("foto") != null) {
-                        binding.userImage.setImageURI(Uri.parse(value.getString("foto")));
-                    }
-                }
-            });
-        }
+    @Override
+    public void SelecionarFoto(View view){
+        Intent iGAlerry;
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R && android.os.ext.SdkExtensions.getExtensionVersion(android.os.Build.VERSION_CODES.R) >= 2) {
+//            iGAlerry = new Intent(MediaStore.ACTION_PICK_IMAGES);
+//            iGAlerry.setType("image/*");
+//        }else{
+//            iGAlerry = new Intent(Intent.ACTION_PICK);
+//            iGAlerry.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//        }
+        iGAlerry = new Intent(Intent.ACTION_PICK);
+        iGAlerry.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        mStartForResult.launch(iGAlerry);
+        v = view;
     }
 
-    private void AtivarBiometria(boolean b){//ativar ou desativar a biometria, e mudar o estado no bando de dados
-        if (b){
-            db.collection("Usuarios").document(Objects.requireNonNull(auth.getUid())).update("biometria", Boolean.TRUE).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    Log.d("Update", "Sucesso!");
-                }
-            });
-        }else{
-            db.collection("Usuarios").document(Objects.requireNonNull(auth.getUid())).update("biometria", Boolean.FALSE).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    Log.d("Update", "Sucesso!");
-                }
-            });
+    @Override
+    public void MostarDados(DocumentSnapshot value) {
+        if (Objects.requireNonNull(value).getBoolean("biometria") == Boolean.TRUE) {
+            binding.ativarBiometria.setChecked(Boolean.TRUE);
+        }
+        binding.userName.setText(value.getString("nome"));
+
+        if (Objects.requireNonNull(value).getString("foto") != null) {
+            binding.userImage.setImageURI(Uri.parse(value.getString("foto")));
         }
     }
 }

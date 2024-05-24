@@ -1,14 +1,23 @@
 package com.joaoandrade.passwordarchive.Model;
 
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.NotNull;
+
+@Entity(nameInDb = "Users")
 public class UserModel {
 
     public UserModel(){
         
     }
-
+    @Id
     private String id;
 
-    private String email, senha, nome, biometria, language;
+    @NotNull
+    private String email, senha, nome;
+
+    @NotNull
+    private boolean biometria;
 
     public String getId() {
         return id;
@@ -42,19 +51,12 @@ public class UserModel {
         this.nome = nome;
     }
 
-    public String getBiometria() {
+    public boolean getBiometria() {
         return biometria;
     }
 
-    public void setBiometria(String biometria) {
+    public void setBiometria(boolean biometria) {
         this.biometria = biometria;
     }
 
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
 }

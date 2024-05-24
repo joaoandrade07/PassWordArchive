@@ -6,13 +6,16 @@ public class ListModel {
 
     }
 
-    private Long id;
+    private String id;
 
-    private String conta, usuario, senha;
+    private String conta;
+    private String usuario;
+    private String senha;
+    private String logo;
 
-    public Long getId() { return id; }
+    public String getId() { return id; }
 
-    public void setId(Long id) { this.id = id; }
+    public void setId(String id) { this.id = id; }
 
     public String getConta() {
         return conta;
@@ -36,5 +39,13 @@ public class ListModel {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
     }
 }

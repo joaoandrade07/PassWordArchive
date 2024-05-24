@@ -1,61 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
-    >
+    tools:context=".UI.TelaPrincipal.HomeActivity">
 
-
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/barraNavegacao"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:theme="@style/MenuTheme"
+        android:layout_height="match_parent"
+        app:layout_constraintVertical_bias="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/barraNavegacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:theme="@style/MenuTheme"
+            app:liftOnScroll="true"
+            app:liftOnScrollTargetViewId="@id/constraint_layout">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_scrollEffect="compress"
+                app:layout_scrollFlags="enterAlways|snap"
+                app:menu="@menu/menu_home"
+                app:navigationIcon="@drawable/account_circle"
+                app:title="@string/app_name" />
+            <!--        <com.google.android.material.search.SearchBar-->
+            <!--            android:id="@+id/search_bar"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="?attr/actionBarSize"-->
+            <!--            android:hint="search" />-->
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <!--    <androidx.fragment.app.FragmentContainerView-->
+        <!--        android:id="@+id/fragment_container_view"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="0dp"-->
+        <!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
+        <!--        app:defaultNavHost="true"-->
+        <!--        app:layout_constraintBottom_toTopOf="@+id/navigationView"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/barraNavegacao"-->
+        <!--        app:layout_constraintVertical_bias="0.0"-->
+        <!--        app:navGraph="@navigation/nav_main"/>-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/menuItem1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/fab_add"
+        app:shapeAppearanceOverlay="@style/circular"
+        android:theme="@style/BackgroundFabMain"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.95"
+       app:layout_constraintHorizontal_bias="0.9"
+        android:importantForAccessibility="no" />
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-    <!--    <androidx.fragment.app.FragmentContainerView-->
-<!--        android:id="@+id/fragment_container_view"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
-<!--        app:defaultNavHost="true"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/navigationView"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/barraNavegacao"-->
-<!--        app:layout_constraintVertical_bias="0.0"-->
-<!--        app:navGraph="@navigation/nav_main"/>-->
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/barraNavegacao"
-        android:layout_marginTop="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barraNavegacao"
-        app:layout_constraintVertical_bias="0.0" />
 
 <!--    <TextView-->
 <!--        android:id="@+id/testedenoticacao"-->
@@ -68,38 +95,38 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toBottomOf="@+id/recycler" />-->
 
-    <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:menu_colorNormal="@color/black"
-        app:menu_colorPressed="@color/background_input"
-        fab:menu_icon="@drawable/image_button_add"
-        fab:menu_labels_colorNormal="@color/black"
-        fab:menu_labels_colorPressed="@color/background_input"
-        fab:menu_labels_textColor="@color/white">
+<!--    <com.github.clans.fab.FloatingActionMenu-->
+<!--        android:id="@+id/fab"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.95"-->
+<!--        app:layout_constraintHorizontal_bias="0.9"-->
+<!--        app:menu_colorNormal="@color/black"-->
+<!--        app:menu_colorPressed="@color/background_input"-->
+<!--        fab:menu_icon="@drawable/image_button_add"-->
+<!--        fab:menu_labels_colorNormal="@color/black"-->
+<!--        fab:menu_labels_colorPressed="@color/background_input"-->
+<!--        fab:menu_labels_textColor="@color/white">-->
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/image_button_add"
-            app:fab_colorPressed="@color/background_input"
-            app:fab_shadowColor="@color/background_page"
-            app:fab_shadowRadius="10dp"
-            app:fab_showShadow="false"
-            fab:fab_colorNormal="@color/black"
-            fab:fab_label="Menu item 1"
-            fab:fab_size="mini" />
-    </com.github.clans.fab.FloatingActionMenu>
+<!--        <com.github.clans.fab.FloatingActionButton-->
+<!--            android:id="@+id/menu_item1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/image_button_add"-->
+<!--            app:fab_colorPressed="@color/background_input"-->
+<!--            app:fab_shadowColor="@android:color/transparent"-->
+<!--            app:fab_shadowRadius="10dp"-->
+<!--            app:fab_showShadow="false"-->
+<!--            fab:fab_colorNormal="@color/black"-->
+<!--            fab:fab_label="Menu item 1"-->
+<!--            fab:fab_size="mini" />-->
+<!--    </com.github.clans.fab.FloatingActionMenu>-->
 
 <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
 <!--        android:id="@+id/navigationView"-->

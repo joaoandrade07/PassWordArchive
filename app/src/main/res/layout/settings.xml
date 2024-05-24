@@ -9,7 +9,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".View.SettingsActivity">
+    tools:context=".UI.TelaConfiguracoes.ConfiguracoesActivity">
 
     <ImageView
         android:id="@+id/voltarHome"
@@ -64,7 +64,6 @@
                 android:id="@+id/selecionarImagem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/black"
                 android:src="@drawable/image_edit"
                 app:shapeAppearanceOverlay="@style/circular"
                 android:theme="@style/BackgroundFab"

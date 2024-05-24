@@ -35,6 +35,7 @@
     <string name="senha_diferentes">Different passwords!</string>
     <string name="entrar_usando_digital">Login using fingerprint</string>
     <string name="autenticacao">Authentication</string>
+    <string name="use_sua_digital">Use your fingerprint</string>
     <string name="cancel_biometria">Cancel</string>
     <string name="tela_principal">Main screen</string>
     <string name="modo_aviao_ativado">Airplane mode activated</string>
@@ -45,4 +46,7 @@
     <string name="idioma_portugues">Portuguese</string>
     <string name="idioma_ingles">English</string>
     <string name="foto_alterada">Photo changed successfully!</string>
+    <string name="nome_alterado">Name changed successfully!</string>
+    <string name="deletar">Delete</string>
+    <string name="editar">Edit</string>
 </resources>
